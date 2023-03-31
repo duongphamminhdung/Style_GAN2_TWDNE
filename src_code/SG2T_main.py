@@ -59,7 +59,7 @@ class GAN():
               restart    = False,                   # Training start from scratch?  
               model_name = 'SG2T',                   # File name for model and snapshot
               #path       = '../../../Repository/Anime/TWDNE/TWDNE1/*.jpg',
-              path       = '../../../Repository/Anime/TWDNE/*.jpg',
+              path       = '/Users/duongphamminhdung/Documents/GitHub/test_twdne/Style_GAN2_TWDNE/TWDNE/TWDNE1/*.jpg',
               **_kwargs):
         self.epochs      = epochs                   # Training epochs
         self.buffer_size = buffer_size              # Training set buffer size
@@ -90,7 +90,7 @@ class GAN():
         if restart == False: self.load_weights() 
         self._train()
     #----------------------------------------  
-    def _train(self):  
+    def _train(self):
         print('Begin training')
         ds = SG2T_utils.load_dataset_TWDNE(self.path, self.buffer_size, self.batch_size)    
         a  = 0.99;                                  # History mving average constant
@@ -297,7 +297,12 @@ class GAN():
 #---------------------------------------------------- 
 model = GAN()
 #model.train(restart= True) 
-model.train(restart= False) 
+model.train(restart= False)
+model.predict(24)
+model.predict(6)
+model.predict(2)
+model.save_weights() 
+model.load_weights() 
 #----------------------------------------------------
 
 #----------------------------------------------------
